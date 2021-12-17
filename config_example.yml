@@ -1,0 +1,63 @@
+prepare: 
+  overwrite: True
+  # TNC encode dir
+  tnc_dir: Data/tnc_encode
+
+  splits_params:
+    # If multiple splits are described in a single file, select the following params.
+    info_file: Experiments/clin_total.xls
+    splits_file: Experiments/multi_splits.xls
+    categories: 
+      train: train
+      test: test
+      validation: validation
+
+    # If each split is described in a single file, select the following params.
+    # file_patterns:
+    #   train: Experiments/train_for_split{}.csv
+    #   test: Experiments/test_for_split{}.csv
+    
+    # Other params used for reading files.
+    others:
+      sep: "\t"
+      index_col: 'sample_ID'
+
+  # Region params.
+  region_params:
+    # If using top regions, select the following params.
+    # top_regions_file_pattern: 'Experiments/top_regions_split{}.csv'
+    # top_n: 200
+    # File index name.
+    # region_id_label: ""
+    # importance_label: ""
+
+    # If using all regions, select the following params.
+    bed_file: Experiments/regions.bed
+    others:
+      sep: "\t"
+      names: None
+
+
+auto_encoder_train:
+  # Params used for Autoencoder training.
+  h_params:
+    auto_encoder:
+      train_batch: 32
+      train_epoch: 100
+      lr: !!float 1e-4
+      weight_decay: !!float 1e-5
+      region_height: 2000
+      encode_dim: 50
+
+auto_encoder_encode:
+  # Params used for Autoencoder encode phase.
+  encode_splits:
+    - train
+    - test
+    - validation
+
+  h_params:
+    encoder:
+      encode_batch: 16
+      region_height: 2000
+      encode_dim: 50
