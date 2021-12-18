@@ -13,7 +13,7 @@ Table of Contents
 ## 0. Introduction
 
 ## 1. Dataset
-The main fields of raw data include 
+The main fields of raw data include `chromosome`, `start index`, `end index`, `strand`, `methylation pattern`, `pattern count`, `cg list`.
 
 
 ## 2. Environments
