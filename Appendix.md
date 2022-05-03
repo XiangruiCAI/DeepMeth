@@ -14,7 +14,7 @@ The methylation frequency (MF), also known as the Beta value, represents the pro
 $  MF = \frac{\sum_{i=1}^{n}h_i}{b \times n} $, where $n$ refers to the length of the haplotypes, $h_i$ the number of the methylated CpG sites.
 
 
-<img align="center" src="assets/Table1.png" width="750">
+<img align="center" src="assets/Table1.PNG" width="750">
 Table 1: The candidate hyper-parameters of the three classifiers. We obtain the best hyper-parameters of each model by “grid search”. The detailed parameter descriptions can be found in the official documentations of the libraries.
 
 ### Methylation Entropy (Xie et al. 2011) 
@@ -65,7 +65,7 @@ Reminding that we run the experiments on 10 random splits. So we report the aver
 ## Performance on Different Patient Groups
 We further compare the performance of DeepMeth and the baselines with regard to nodule types, age groups and genders respectively. The results are presented in Table~\ref{appendix_nodule_type_AUC}, Table~\ref{appendix_age_AUC}, and Table~\ref{appendix_gender_AUC}.
 
-<img align="center" src="assets/Table3.pdf" width="750">
+<img align="center" src="assets/Table3.PNG" width="750">
 Table 3: Model performance for different nodule types in
 terms of AUC. (R.R.: Region Representations; DM: Deep-
 Meth.)
@@ -79,7 +79,7 @@ Similar observations can be found in Table~\ref{appendix_age_AUC}. DeepMeth outp
 There are very few samples where the patients are younger than 40 and older than 71. 
 Thus, we can find that some metrics achieves 100\% classification accuracy occasionally. 
 
-<img align="center" src="assets/Table4.pdf" width="750">
+<img align="center" src="assets/Table4.PNG" width="750">
 Table 4: Model performance for patients of different age groups in terms of AUC.
 
 
@@ -88,7 +88,7 @@ For patients whose ages are from 41 to 55 and from 56 to 70, DeepMeth outperform
 We can find the performance of DeepMeth and the baselines for males and females in Table~\ref{appendix_gender_AUC} respectively. DeepMeth achieves the best performance among the methods. 
 We observe that there is a bias between male and female patients. DeepMeth performs better for male patients than females. In addition, most previous methods achieve higher AUC scores on male patients than those on female patients. This is an interesting finding and should be further analyzed by biologists.
 
-<img align="center" src="assets/Table5.pdf" width="750">
+<img align="center" src="assets/Table5.PNG" width="750">
 Table 5: Model performance for patients with different gen-
 ders in terms of AUC.
 
@@ -102,7 +102,7 @@ Specifically, DeepMeth($h=10$) achieves 8.17\%, 17.78\%, and 9.58\% improvements
 We also compare the Receiver Operating Characteristic (ROC) curves of DeepMeth and the baselines in Figure~\ref{fig:baseline_ROC} and Figure~\ref{fig:DeepMeth_ROC}. 
 It can be observed that the true positive rates of DeepMeth increase faster than those of the baselines as the false positive rates increase. The trends also demonstrate that DeepMeth is more sensitive to detect lung cancers than the baselines, which is more suitable to apply in clinical scenarios.
 
-<img align="center" src="assets/Table6.pdf" width="750">
+<img align="center" src="assets/Table6.PNG" width="750">
 Table 6: Sensitivity comparision between DeepMeth and the
 baselines. The specificity is set to be 0.6. (R.R.: Region Rep-
 resentation; DM: Deep-Meth.)
@@ -118,9 +118,9 @@ throughput targeted DNA methylation sequencing of circulating tumor DNA (ctDNA).
 Xie, H.; Wang, M.; De Andrade, A.; Bonaldo, M. d. F.; Galat, V.; Arndt, K.; Rajaram, V.; Goldman, S.; Tomita, T.; and Soares, M. B. 2011. Genome-wide quantitative assess-
 ment of variation in DNA methylation patterns. Nucleic acids research, 39(10): 4099–4108.
 
-<img align="center" src="assets/baseline_ROC.png" width="750">
+<img align="center" src="assets/baseline_ROC.PNG" width="750">
 <sub><sup>Figure 1:The ROC curves of the four baselines across different classifiers.</sup></sub>
 
-<img align="center" src="assets/DeepMeth_ROC.png" width="750">
+<img align="center" src="assets/DeepMeth_ROC.PNG" width="750">
 <sub><sup>Figure 2:
 The ROC curves of DeepMeth ($h=1$ and $h=10$) across different classifiers.</sup></sub>
