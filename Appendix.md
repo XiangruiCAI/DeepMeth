@@ -18,10 +18,10 @@ $  MF = \frac{\sum_{i=1}^{n}h_i}{b \times n} $, where $n$ refers to the length o
 | Random Forest | #estimators <br> criterion <br> max features | 100, 200, 500 <br> "gini", "entropy" <br> "sqrt", "log2", "all" |
 | XGBoost | #estimators <br> learning rate | 100, 200, 500 <br> 0.05, 0.1, 0.3, 0.5|
 | LightGBM |  #estimators <br> learning rate <br> boosting type | 100, 200, 500 <br> 0.05, 0.1, 0.5 <br> "gbdt", "goss" |
-<sub>Table 1: The candidate hyper-parameters of the three clas-
+</sup></sub>Table 1: The candidate hyper-parameters of the three clas-
 sifiers. We obtain the best hyper-parameters of each model
 by “grid search”. The detailed parameter descriptions can be
-found in the official documentations of the libraries.<sub>
+found in the official documentations of the libraries.</sup></sub>
 
 ### Methylation Entropy (Xie et al. 2011) 
 Following Shannon entropy $H(x)$, methylation entropy (ME) is the state-of-the-art method in the measurement of variability of DNA methylation in specific genomic regions. For a genome region with $b$ CpG loci and n methylation haplotype, ME is defined by:
@@ -81,6 +81,9 @@ We further compare the performance of DeepMeth and the baselines with regard to 
 | MEP         | 0.8736                        | 1.0000                        | 0.7833                        | 0.6905 | 0.7554 | 0.6775 |
 | DM($h=1$)    | 0.7704$\pm$0.2081             | 0.7646$\pm$0.1835             | 0.7560$\pm$0.1389             |
 | DM($h=10$)   | \textbf{0.8024$\pm$0.1737}    | \textbf{0.8042$\pm$0.1862}    | \textbf{0.7735$\pm$0.1641}    |
+</sup></sub>Table 3: Model performance for different nodule types in
+terms of AUC. (R.R.: Region Representations; DM: Deep-
+Meth.)</sup></sub>
 
 As shown in Table~\ref{appendix_nodule_type_AUC}, DeepMeth performs the best for all the nodule types when the size of region vectors is set to 10. It is worth noting that DeepMeth achieves about 3.5\% improvements compared to MF for partially solid nodules. Partially solid nodules are the most complicated among the three types of nodules. This improvements are of significance in clinical applications. Moreover,
 we can also observe that DeepMeth with 1-length region vectors outperforms the baselines for nonsolid and partial-solid nodules. For solid nodules, its performance is close to MHL as well. 
@@ -100,12 +103,30 @@ Thus, we can find that some metrics achieves 100\% classification accuracy occas
 | MHL($w_i=i$)           | \textbf{1.0000$\pm$0.0000} | 0.5815$\pm$1516            | 0.6507$\pm$2253            | \textbf{1.0000$\pm$0.0000} |
 | DeepMeth($h=1$)        | 0.7976$\pm$0.1774          | 0.7719$\pm$0.1188          | 0.7823$\pm$0.0912          | \textbf{1.0000$\pm$0.0000} |
 | DeepMeth($h=10$)}      | 0.8750$\pm$0.1559          | \textbf{0.7988$\pm$0.0831} | \textbf{0.8284$\pm$0.1169} | \textbf{1.0000$\pm$0.0000} |
+</sup></sub>
+Table 4: Model performance for patients of different age groups in terms of AUC.</sup></sub>
 
 
 For patients whose ages are from 41 to 55 and from 56 to 70, DeepMeth outperforms the baselines by big margins. We believe that the performance of DeepMeth is able to further improve by feeding more clinical data.
 
 We can find the performance of DeepMeth and the baselines for males and females in Table~\ref{appendix_gender_AUC} respectively. DeepMeth achieves the best performance among the methods. 
 We observe that there is a bias between male and female patients. DeepMeth performs better for male patients than females. In addition, most previous methods achieve higher AUC scores on male patients than those on female patients. This is an interesting finding and should be further analyzed by biologists.
+
+
+| Region Representations | Male             | Female               |
+|---------------------------------|-------------------------------|-------------------------------|
+| PCM(2-3)               | 0.6495$\pm$0.1887             | 0.5422$\pm$0.2021             |
+| PCM(3-5)               | 0.7357$\pm$0.1462             | 0.6226$\pm$0.2257             |
+|ME                    | \underline{0.7620$\pm$0.0954} | 0.6938$\pm$0.1066             |
+| MF                   | 0.6460$\pm$0.1239             | \underline{0.7091$\pm$0.1616} |
+| MHL($w_i=i$)           | 0.7129$\pm$0.1437             | 0.6653$\pm$0.1775             |
+| DeepMeth($h=1$)        | 0.8067$\pm$0.0984             | 0.6994$\pm$0.1367             |
+| DeepMeth($h=10$)       | \textbf{0.8498$\pm$0.1139}    | \textbf{0.7309$\pm$0.1154}    |
+</sup></sub>
+Table 5: Model performance for patients with different gen-
+ders in terms of AUC.</sup></sub>
+
+
 
 ## Sensitivity and ROC of the Methods
 
@@ -124,6 +145,10 @@ It can be observed that the true positive rates of DeepMeth increase faster than
 | MHL($w_i=i$) | 0.7141$\pm$0.1737             | 0.5474$\pm$0.1951             | 0.6198$\pm$0.1297             |
 |{DM($h=1$)    | 0.7963$\pm$0.0926             | 0.8333$\pm$0.0880             | 0.8000$\pm$0.1024             |
 | DM($h=10$)   | \textbf{0.8415$\pm$0.0592}    | \textbf{0.8370$\pm$0.0940}    | \textbf{0.8407$\pm$0.1022}    |
+</sup></sub>
+Table 6: Sensitivity comparision between DeepMeth and the
+baselines. The specificity is set to be 0.6. (R.R.: Region Rep-
+resentation; DM: Deep-Meth.)</sup></sub>
 
 
 
