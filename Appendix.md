@@ -13,12 +13,8 @@ The percentage of co-methylation (PCM) is calculated as the ratio of the co-meth
 The methylation frequency (MF), also known as the Beta value, represents the proportion of methylated CpG sites in the genomic region with b haplotypes,  which is calculated by 
 $  MF = \frac{\sum_{i=1}^{n}h_i}{b \times n} $, where $n$ refers to the length of the haplotypes, $h_i$ the number of the methylated CpG sites.
 
-|Classifiers | Parameters | Search Values|
-|-----|-----|-----|
-| Random Forest | #estimators <br> criterion <br> max features | 100, 200, 500 <br> "gini", "entropy" <br> "sqrt", "log2", "all" |
-| XGBoost | #estimators <br> learning rate | 100, 200, 500 <br> 0.05, 0.1, 0.3, 0.5|
-| LightGBM |  #estimators <br> learning rate <br> boosting type | 100, 200, 500 <br> 0.05, 0.1, 0.5 <br> "gbdt", "goss" |
 
+<img align="center" src="assets/Table1.png" width="750">
 Table 1: The candidate hyper-parameters of the three classifiers. We obtain the best hyper-parameters of each model by “grid search”. The detailed parameter descriptions can be found in the official documentations of the libraries.
 
 ### Methylation Entropy (Xie et al. 2011) 
@@ -69,17 +65,7 @@ Reminding that we run the experiments on 10 random splits. So we report the aver
 ## Performance on Different Patient Groups
 We further compare the performance of DeepMeth and the baselines with regard to nodule types, age groups and genders respectively. The results are presented in Table~\ref{appendix_nodule_type_AUC}, Table~\ref{appendix_age_AUC}, and Table~\ref{appendix_gender_AUC}.
 
-| R.R.         | nonsolid             | partially solid      | solid               |
-|-----------------------|-------------------------------|-------------------------------|-------------------------------|
-| PCM(2-3)     | 0.6465$\pm$0.2399             | 0.6400$\pm$0.2795             | 0.5287$\pm$0.2372             |
-| PCM(3-5)     | 0.6789$\pm$0.2198             | 0.6530$\pm$0.2054             | 0.6036$\pm$0.2238             |
-| ME           | 0.7654$\pm$0.1461             | 0.6290$\pm$0.2132             | 0.7534$\pm$0.2183             |
-| MF           | 0.6633$\pm$0.2458             | \underline{0.6694$\pm$0.1756} | 0.6596$\pm$0.2042             |
-| MHL($w_i=i$) | \underline{0.7663$\pm$0.1566} | 0.6289$\pm$0.2471             | \underline{0.7697$\pm$0.2235} |
-| MEP         | 0.8736                        | 1.0000                        | 0.7833                        | 0.6905 | 0.7554 | 0.6775 |
-| DM($h=1$)    | 0.7704$\pm$0.2081             | 0.7646$\pm$0.1835             | 0.7560$\pm$0.1389             |
-| DM($h=10$)   | \textbf{0.8024$\pm$0.1737}    | \textbf{0.8042$\pm$0.1862}    | \textbf{0.7735$\pm$0.1641}    |
-
+<img align="center" src="assets/Table3.pdf" width="750">
 Table 3: Model performance for different nodule types in
 terms of AUC. (R.R.: Region Representations; DM: Deep-
 Meth.)
@@ -93,17 +79,7 @@ Similar observations can be found in Table~\ref{appendix_age_AUC}. DeepMeth outp
 There are very few samples where the patients are younger than 40 and older than 71. 
 Thus, we can find that some metrics achieves 100\% classification accuracy occasionally. 
 
-| Region Representations | 0-40              | 41-55             | 56-70             | $\geq$ 71         |
-|---------------------------------|----------------------------|----------------------------|----------------------------|----------------------------|
-| PCM(2-3)               | 0.5000$\pm$0.0000          | 0.5854$\pm$0.1885          | 0.6183$\pm$0.1738          | \textbf{1.0000$\pm$0.0000} |
-| PCM(3-5)             | 0.5000$\pm$ 0.0000         | 0.6622$\pm$0.1290          | 0.5060$\pm$0.2068          | \textbf{1.0000$\pm$0.0000} |
-| ME                   | \textbf{1.0000$\pm$0.0000} | 0.6858$\pm$0.1496          | 0.7770$\pm$0.1190          | \textbf{1.0000$\pm$0.0000} |
-| MF                   | \textbf{1.0000$\pm$0.0000} | 0.6314$\pm$0.1130          | 0.6846$\pm$0.1601          | 0.7500$\pm$0.2500          |
-| MHL($w_i=i$)           | \textbf{1.0000$\pm$0.0000} | 0.5815$\pm$1516            | 0.6507$\pm$2253            | \textbf{1.0000$\pm$0.0000} |
-| DeepMeth($h=1$)        | 0.7976$\pm$0.1774          | 0.7719$\pm$0.1188          | 0.7823$\pm$0.0912          | \textbf{1.0000$\pm$0.0000} |
-| DeepMeth($h=10$)}      | 0.8750$\pm$0.1559          | \textbf{0.7988$\pm$0.0831} | \textbf{0.8284$\pm$0.1169} | \textbf{1.0000$\pm$0.0000} |
-
-
+<img align="center" src="assets/Table4.pdf" width="750">
 Table 4: Model performance for patients of different age groups in terms of AUC.
 
 
@@ -112,18 +88,7 @@ For patients whose ages are from 41 to 55 and from 56 to 70, DeepMeth outperform
 We can find the performance of DeepMeth and the baselines for males and females in Table~\ref{appendix_gender_AUC} respectively. DeepMeth achieves the best performance among the methods. 
 We observe that there is a bias between male and female patients. DeepMeth performs better for male patients than females. In addition, most previous methods achieve higher AUC scores on male patients than those on female patients. This is an interesting finding and should be further analyzed by biologists.
 
-
-| Region Representations | Male             | Female               |
-|---------------------------------|-------------------------------|-------------------------------|
-| PCM(2-3)               | 0.6495$\pm$0.1887             | 0.5422$\pm$0.2021             |
-| PCM(3-5)               | 0.7357$\pm$0.1462             | 0.6226$\pm$0.2257             |
-|ME                    | \underline{0.7620$\pm$0.0954} | 0.6938$\pm$0.1066             |
-| MF                   | 0.6460$\pm$0.1239             | \underline{0.7091$\pm$0.1616} |
-| MHL($w_i=i$)           | 0.7129$\pm$0.1437             | 0.6653$\pm$0.1775             |
-| DeepMeth($h=1$)        | 0.8067$\pm$0.0984             | 0.6994$\pm$0.1367             |
-| DeepMeth($h=10$)       | \textbf{0.8498$\pm$0.1139}    | \textbf{0.7309$\pm$0.1154}    |
-
-
+<img align="center" src="assets/Table5.pdf" width="750">
 Table 5: Model performance for patients with different gen-
 ders in terms of AUC.
 
@@ -137,16 +102,7 @@ Specifically, DeepMeth($h=10$) achieves 8.17\%, 17.78\%, and 9.58\% improvements
 We also compare the Receiver Operating Characteristic (ROC) curves of DeepMeth and the baselines in Figure~\ref{fig:baseline_ROC} and Figure~\ref{fig:DeepMeth_ROC}. 
 It can be observed that the true positive rates of DeepMeth increase faster than those of the baselines as the false positive rates increase. The trends also demonstrate that DeepMeth is more sensitive to detect lung cancers than the baselines, which is more suitable to apply in clinical scenarios.
 
-| R.R.         | RandomForest         | XGBoost              | LightGBM             |
-|-----------------------|-------------------------------|-------------------------------|-------------------------------|
-| PCM(2-3)    | 0.6224$\pm$0.1095             | 0.5196$\pm$0.1475             | 0.5292$\pm$0.1880             |
-| PCM(3-5)     | 0.6859$\pm$0.0883             | 0.6469$\pm$0.1438             | 0.6262$\pm$0.1611             |
-| ME          | \underline{0.7598$\pm$0.1563} | \underline{0.6592$\pm$0.1886} | \underline{0.7449$\pm$0.1286} |
-| MF           | 0.6574$\pm$0.1215             | 0.5942$\pm$0.1053             | 0.6665$\pm$0.1459             |
-| MHL($w_i=i$) | 0.7141$\pm$0.1737             | 0.5474$\pm$0.1951             | 0.6198$\pm$0.1297             |
-|{DM($h=1$)    | 0.7963$\pm$0.0926             | 0.8333$\pm$0.0880             | 0.8000$\pm$0.1024             |
-| DM($h=10$)   | \textbf{0.8415$\pm$0.0592}    | \textbf{0.8370$\pm$0.0940}    | \textbf{0.8407$\pm$0.1022}    |
-
+<img align="center" src="assets/Table6.pdf" width="750">
 Table 6: Sensitivity comparision between DeepMeth and the
 baselines. The specificity is set to be 0.6. (R.R.: Region Rep-
 resentation; DM: Deep-Meth.)
@@ -162,9 +118,9 @@ throughput targeted DNA methylation sequencing of circulating tumor DNA (ctDNA).
 Xie, H.; Wang, M.; De Andrade, A.; Bonaldo, M. d. F.; Galat, V.; Arndt, K.; Rajaram, V.; Goldman, S.; Tomita, T.; and Soares, M. B. 2011. Genome-wide quantitative assess-
 ment of variation in DNA methylation patterns. Nucleic acids research, 39(10): 4099–4108.
 
-<img align="center" src="assets/baseline_ROC.pdf" width="750">
-<sub><sup>Figure 1:The ROC curves of the four baselines across different classifiers.</sup></sub>Percentage of Co-methylation
+<img align="center" src="assets/baseline_ROC.png" width="750">
+<sub><sup>Figure 1:The ROC curves of the four baselines across different classifiers.</sup></sub>
 
-<img align="center" src="assets/DeepMeth_ROC.pdf" width="750">
+<img align="center" src="assets/DeepMeth_ROC.png" width="750">
 <sub><sup>Figure 2:
 The ROC curves of DeepMeth ($h=1$ and $h=10$) across different classifiers.</sup></sub>
