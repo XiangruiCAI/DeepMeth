@@ -77,3 +77,19 @@ As shown in Table~\ref{appendix_specific_sensitive}, given a specificity ($1-$fa
 Specifically, DeepMeth($h=10$) achieves 8.17\%, 17.78\%, and 9.58\% improvements compared to the ME method, the best one among the baselines.
 We also compare the Receiver Operating Characteristic (ROC) curves of DeepMeth and the baselines in Figure~\ref{fig:baseline_ROC} and Figure~\ref{fig:DeepMeth_ROC}. 
 It can be observed that the true positive rates of DeepMeth increase faster than those of the baselines as the false positive rates increase. The trends also demonstrate that DeepMeth is more sensitive to detect lung cancers than the baselines, which is more suitable to apply in clinical scenarios.
+
+# References
+Bibikova, M.; and Fan, J.-B. 2009. GoldenGate® assay for DNA methylation profiling. In DNA Methylation, 149–163. Springer.
+Guo, S.; Diep, D.; Plongthongkum, N.; Fung, H.-L.; Zhang, K.; and Zhang, K. 2017. Identification of methylation haplotype blocks aids in deconvolution of heterogeneous tissue samples and tumor tissue-of-origin mapping from plasma
+DNA. Nature genetics, 49(4): 635–642.
+Liang, W.; Zhao, Y.; Huang, W.; Gao, Y.; Xu, W.; Tao, J.; Yang, M.; Li, L.; Ping, W.; Shen, H.; et al. 2019. Noninvasive diagnosis of early-stage lung cancer using high-
+throughput targeted DNA methylation sequencing of circulating tumor DNA (ctDNA). Theranostics, 9(7): 2056.
+Xie, H.; Wang, M.; De Andrade, A.; Bonaldo, M. d. F.; Galat, V.; Arndt, K.; Rajaram, V.; Goldman, S.; Tomita, T.; and Soares, M. B. 2011. Genome-wide quantitative assess-
+ment of variation in DNA methylation patterns. Nucleic acids research, 39(10): 4099–4108.
+
+<img align="center" src="assets/baseline_ROC.pdf" width="750">
+<sub><sup>Figure 1:The ROC curves of the four baselines across different classifiers.</sup></sub>
+
+<img align="center" src="assets/DeepMeth_ROC.pdf" width="750">
+<sub><sup>Figure 2:
+The ROC curves of DeepMeth ($h=1$ and $h=10$) across different classifiers.</sup></sub>
