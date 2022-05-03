@@ -81,6 +81,8 @@ We further compare the performance of DeepMeth and the baselines with regard to 
 | MEP         | 0.8736                        | 1.0000                        | 0.7833                        | 0.6905 | 0.7554 | 0.6775 |
 | DM($h=1$)    | 0.7704$\pm$0.2081             | 0.7646$\pm$0.1835             | 0.7560$\pm$0.1389             |
 | DM($h=10$)   | \textbf{0.8024$\pm$0.1737}    | \textbf{0.8042$\pm$0.1862}    | \textbf{0.7735$\pm$0.1641}    |
+
+
 </sup></sub>Table 3: Model performance for different nodule types in
 terms of AUC. (R.R.: Region Representations; DM: Deep-
 Meth.)</sup></sub>
