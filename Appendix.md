@@ -18,10 +18,8 @@ $  MF = \frac{\sum_{i=1}^{n}h_i}{b \times n} $, where $n$ refers to the length o
 | Random Forest | #estimators <br> criterion <br> max features | 100, 200, 500 <br> "gini", "entropy" <br> "sqrt", "log2", "all" |
 | XGBoost | #estimators <br> learning rate | 100, 200, 500 <br> 0.05, 0.1, 0.3, 0.5|
 | LightGBM |  #estimators <br> learning rate <br> boosting type | 100, 200, 500 <br> 0.05, 0.1, 0.5 <br> "gbdt", "goss" |
-Table 1: The candidate hyper-parameters of the three clas-
-sifiers. We obtain the best hyper-parameters of each model
-by “grid search”. The detailed parameter descriptions can be
-found in the official documentations of the libraries.
+
+Table 1: The candidate hyper-parameters of the three classifiers. We obtain the best hyper-parameters of each model by “grid search”. The detailed parameter descriptions can be found in the official documentations of the libraries.
 
 ### Methylation Entropy (Xie et al. 2011) 
 Following Shannon entropy $H(x)$, methylation entropy (ME) is the state-of-the-art method in the measurement of variability of DNA methylation in specific genomic regions. For a genome region with $b$ CpG loci and n methylation haplotype, ME is defined by:
